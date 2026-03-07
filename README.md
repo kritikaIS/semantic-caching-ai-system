@@ -1,3 +1,4 @@
+
 # Semantic Caching System for AI Applications
 
 ## Overview
@@ -46,3 +47,5 @@ Query → Embedding → Cache Check → FAISS Search → Store in Cache
 - FastAPI
 - Sentence Transformers
 - FAISS
+
+
