@@ -1,51 +1,117 @@
-
-# Semantic Caching System for AI Applications
+# Document Clustering and Search using Fuzzy C-Means
 
 ## Overview
-This project implements a semantic caching system that improves AI query processing efficiency by caching semantically similar queries.
+This project performs document clustering using **Fuzzy C-Means (FCM)** on text documents.  
+The documents are converted into numerical vectors using **TF-IDF vectorization**.
+
+After clustering, a **cosine similarity based search function** is implemented to retrieve relevant documents based on user queries.
+
+---
 
 ## Features
-- Semantic Search using Sentence Transformers
-- Vector Search using FAISS
-- Semantic Query Cache
-- FastAPI REST API
 
-## API Endpoints
+- TF-IDF text vectorization
+- Document clustering using **Fuzzy C-Means**
+- Visualization of cluster distribution
+- Identification of **boundary documents**
+- Query-based document search using cosine similarity
 
-POST /query  
-GET /cache/stats  
-DELETE /cache
+---
 
-## Run the API
+## Project Workflow
 
-Install dependencies:
+1. Load and preprocess dataset  
+2. Convert documents to TF-IDF vectors  
+3. Apply **Fuzzy C-Means clustering**  
+4. Analyze cluster membership distribution  
+5. Identify **boundary documents**  
+6. Implement cosine similarity search  
+7. Retrieve relevant documents for user queries  
+
+---
+
+## Fuzzy C-Means Clustering
+
+Fuzzy C-Means allows documents to belong to **multiple clusters with different membership values**.
+
+Example membership values:
 
 ```
-pip install -r requirements.txt
+Cluster 0 : 0.42
+Cluster 1 : 0.38
+Cluster 2 : 0.20
 ```
 
-Run server:
+This indicates that the document is related to multiple clusters.
+
+---
+
+## Boundary Document Analysis
+
+Boundary documents are documents that belong to **multiple clusters with similar membership scores**.
+
+These documents help identify **overlapping topics between clusters**.
+
+---
+
+## Search Function
+
+A cosine similarity based search system is implemented.
+
+Steps:
+
+1. Convert query to TF-IDF vector
+2. Compute cosine similarity with document vectors
+3. Rank documents based on similarity
+4. Return most relevant results
+
+Example queries:
 
 ```
-uvicorn app:app --reload
+search("machine learning")
+search("NASA space exploration")
 ```
 
-Open API docs:
+---
 
-```
-http://localhost:8000/docs
-```
+## Libraries Used
 
-## Demo
-
-Example semantic caching workflow:
-
-Query → Embedding → Cache Check → FAISS Search → Store in Cache
-
-## Tech Stack
 - Python
-- FastAPI
-- Sentence Transformers
-- FAISS
+- NumPy
+- Pandas
+- Scikit-learn
+- Scikit-fuzzy
+- Matplotlib
 
+---
 
+## Installation
+
+Install required libraries:
+
+```
+pip install numpy pandas scikit-learn scikit-fuzzy matplotlib
+```
+
+---
+
+## How to Run
+
+1. Open the Jupyter Notebook
+2. Run all cells sequentially
+3. Test queries using the search function
+
+Example:
+
+```
+search("machine learning")
+search("space exploration")
+```
+
+---
+
+## Conclusion
+
+This project demonstrates how **Fuzzy C-Means clustering** can be used for document clustering where documents may belong to multiple topics.
+
+The added **cosine similarity search system** allows users to retrieve relevant documents efficiently.
